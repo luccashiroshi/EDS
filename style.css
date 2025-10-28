@@ -192,7 +192,7 @@ footer {
 }
 
 .content.active {
-    max-height: 500px; /* altura máxima quando aberto */
+    max-height: 1000px; /* altura máxima quando aberto */
     padding: 20px;
 }
 
