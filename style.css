@@ -20,7 +20,6 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 20px 60px;
-    position: fixed;
     width: 100%;
     top: 0;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -65,7 +64,7 @@ nav a.active {
 main {
     max-width: 900px;
     margin: 0 auto 60px auto;
-    padding: 140px 30px 0 30px; /* espaço abaixo do cabeçalho */
+    padding: 30px 30px 0 30px; /* espaço abaixo do cabeçalho */
     text-align: left;
 }
 
@@ -140,34 +139,68 @@ footer {
     text-decoration: underline;
 }
 
-/* ======= ESTILO DOS TEXTOS ======= */
+/* ======= TEXTOS EXPANDÍVEIS ======= */
 .text {
-    background-color: #f9fdfb;
-    border-left: 5px solid #042411;
+    margin: 25px 0;
+    border: 1px solid #c9decf;
     border-radius: 8px;
-    margin: 30px 0;
-    padding: 20px 25px;
+    overflow: hidden;
+    background-color: #f9fdfb;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease;
 }
 
 .text:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.text h3 {
-    color: #042411;
-    font-size: 1.3rem;
-    margin-bottom: 10px;
+.toggle-btn {
+    width: 100%;
+    text-align: left;
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background-color: #042411;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    position: relative;
 }
 
-.text p {
-    font-size: 1.05rem;
-    line-height: 1.7;
+.toggle-btn::after {
+    content: "▼";
+    position: absolute;
+    right: 20px;
+    transition: transform 0.3s ease;
+}
+
+.toggle-btn.open::after {
+    transform: rotate(180deg);
+}
+
+.toggle-btn:hover {
+    background-color: #083B1D;
+}
+
+.content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    padding: 0 20px;
+}
+
+.content.active {
+    max-height: 500px; /* altura máxima quando aberto */
+    padding: 20px;
+}
+
+.content p {
+    margin-bottom: 15px;
     color: #333;
+    line-height: 1.7;
 }
-
 
 /* ======= RESPONSIVIDADE ======= */
 @media (max-width: 900px) {
