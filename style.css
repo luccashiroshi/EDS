@@ -140,6 +140,35 @@ footer {
     text-decoration: underline;
 }
 
+/* ======= ESTILO DOS TEXTOS ======= */
+.text {
+    background-color: #f9fdfb;
+    border-left: 5px solid #042411;
+    border-radius: 8px;
+    margin: 30px 0;
+    padding: 20px 25px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.text:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.text h3 {
+    color: #042411;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.text p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #333;
+}
+
+
 /* ======= RESPONSIVIDADE ======= */
 @media (max-width: 900px) {
     header {
