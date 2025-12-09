@@ -62,9 +62,9 @@ nav a.active {
 
 /* ======= SEÇÃO PRINCIPAL ======= */
 main {
-    max-width: 900px;
+    width: min(1200px, 92%);
     margin: 0 auto 60px auto;
-    padding: 30px 30px 0 30px; /* espaço abaixo do cabeçalho */
+    padding: 30px 30px 0 30px;
     text-align: left;
 }
 
@@ -78,6 +78,15 @@ main p {
     font-size: 1.1rem;
     color: #083B1D;
     margin-bottom: 25px;
+}
+
+/* ======= GRID DOS TEXTOS (ATÉ 3 POR LINHA) ======= */
+.sect {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(280px, 1fr));
+    gap: 24px;
+    align-items: start;
+    width: 100%;
 }
 
 .btn {
@@ -141,13 +150,18 @@ footer {
 
 /* ======= TEXTOS EXPANDÍVEIS ======= */
 .text {
-    margin: 25px 0;
+    margin: 0;
+    /* tira o margin antigo (o gap do grid já resolve) */
     border: 1px solid #c9decf;
     border-radius: 8px;
     overflow: hidden;
     background-color: #f9fdfb;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
     transition: box-shadow 0.3s ease;
+    max-width: none;
+    /* remove o travamento em 50% */
+    min-width: 0;
+    /* evita overflow em grid */
 }
 
 .text:hover {
@@ -185,21 +199,29 @@ footer {
 }
 
 .content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease, padding 0.3s ease;
-    padding: 0 20px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.25s ease;
+  padding: 0 20px;
 }
 
 .content.active {
-    max-height: 1000px; /* altura máxima quando aberto */
-    padding: 20px;
+  max-height: 10000px; /* grande o suficiente para não cortar */
+  padding: 20px;
+  text-align: left;
 }
 
 .content p {
     margin-bottom: 15px;
     color: #333;
     line-height: 1.7;
+    text-align: justify;
+}
+
+.content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* ======= RESPONSIVIDADE ======= */
@@ -219,6 +241,10 @@ footer {
     main p {
         font-size: 1rem;
     }
+
+    .sect {
+        grid-template-columns: repeat(2, minmax(260px, 1fr));
+    }
 }
 
 @media (max-width: 700px) {
@@ -231,7 +257,7 @@ footer {
 
     nav {
         width: 100%;
-        flex-direction:row;
+        flex-direction: row;
         justify-content: center;
         gap: 10px;
     }
@@ -246,7 +272,8 @@ footer {
 
     main {
         text-align: center;
-        padding: 20px 20px 0 20px; /* espaço ajustado para mobile */
+        padding: 20px 20px 0 20px;
+        /* espaço ajustado para mobile */
     }
 
     main h2 {
@@ -261,6 +288,10 @@ footer {
         width: 80%;
         padding: 12px;
         font-size: 1rem;
+    }
+
+    .sect {
+        grid-template-columns: 1fr;
     }
 }
 
